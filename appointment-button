@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+
+  <title>Company Mu - Schedule a Conversation</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #111;
+      text-align: center;
+    }
+
+    .mu-appointment {
+      width: 100%;
+      padding: 20px 12px;
+    }
+
+    .mu-appointment h3 {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0 0 12px;
+    }
+
+    .mu-appointment p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0 auto 22px;
+      max-width: 440px;
+    }
+
+    .mu-appointment-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 14px 28px;
+      background: #111;
+      color: #fff;
+      border: 1px solid #111;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .mu-appointment-button:hover {
+      background: #444;
+      color: #fff;
+    }
+
+    .mu-appointment-button:focus-visible {
+      outline: 2px solid #555;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 480px) {
+      .mu-appointment {
+        padding: 15px 8px;
+      }
+
+      .mu-appointment h3 {
+        font-size: 21px;
+      }
+
+      .mu-appointment-button {
+        width: 100%;
+        max-width: 320px;
+        padding: 20px 20px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="mu-appointment">
+
+    <a
+      class="mu-appointment-button"
+      href="https://calendly.com/jerad-companymu/30min"
+      target="_blank"
+      rel="noopener noreferrer">
+      &#128197; Schedule a Conversation &#8599;
+    </a>
+  </section>
+</body>
+</html>
