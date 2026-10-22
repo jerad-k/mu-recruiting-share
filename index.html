@@ -5,10 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1">
-  <title>Company Mu - Share</title>
+
+  <title>Share Company Mu</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     html, body {
       margin: 0;
@@ -18,170 +21,66 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      color: #111;
+      text-align: center;
     }
 
     .mu-share {
-      text-align: center;
-      padding: 20px 12px;
+      width: 100%;
+      padding: 10px 12px;
     }
 
-    .mu-share h3 {
-      font-size: 24px;
-      margin: 0 0 12px;
-    }
-
-    .mu-share p {
-      font-size: 15px;
-      line-height: 1.6;
-      margin: 0 auto 20px;
-      max-width: 440px;
-    }
-
-    .mu-share-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding-top: 20px;
-    }
-
-    .mu-share-buttons button,
-    .mu-share-buttons a {
+    .mu-share-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
-      padding: 12px 18px;
+      gap: 10px;
+      min-height: 48px;
+      padding: 14px 28px;
       background: #111;
-      color: white;
+      color: #fff;
       border: 1px solid #111;
       border-radius: 6px;
-      font: 600 14px Arial, sans-serif;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
+      transition: background 0.2s ease;
     }
 
-    .mu-share-buttons button:hover,
-    .mu-share-buttons a:hover {
+    .mu-share-button:hover {
       background: #444;
+      color: #fff;
     }
 
-    .mu-share-buttons button:focus-visible,
-    .mu-share-buttons a:focus-visible {
+    .mu-share-button:focus-visible {
       outline: 2px solid #555;
       outline-offset: 3px;
     }
 
-    #mu-status {
-      font-size: 13px;
-      min-height: 20px;
-      margin-top: 15px;
-      overflow-wrap: anywhere;
-    }
-
     @media (max-width: 480px) {
-      .mu-share h3 { font-size: 21px; }
-
-      .mu-share-buttons {
-        gap: 8px;
+      .mu-share {
+        padding: 8px;
       }
 
-      .mu-share-buttons button,
-      .mu-share-buttons a {
-        padding: 10px 12px;
-        font-size: 13px;
+      .mu-share-button {
+        width: 100%;
+        max-width: 320px;
+        font-size: 15px;
       }
     }
   </style>
 </head>
 
-  <!-- Trigger GitHub Pages redeployment -->
 <body>
   <section class="mu-share">
-    <h3>Share Company Mu:</h3>
-
-    <div class="mu-share-buttons">
-      <button id="share" type="button">↗ Share</button>
-      <button id="copy" type="button">🔗 Copy Link</button>
-      <a id="whatsapp" target="_blank"
-         rel="noopener noreferrer">WhatsApp</a>
-      <a id="linkedin" target="_blank"
-         rel="noopener noreferrer">LinkedIn</a>
-      <a id="email">✉ Email</a>
-    </div>
-
-    <p id="mu-status" role="status"
-       aria-live="polite"></p>
+    <a
+      class="mu-share-button"
+      href="https://companymu.earth/pages/recruiting#share"
+      target="_blank"
+      rel="noopener noreferrer">
+      ↗ Share Company Mu
+    </a>
   </section>
-
-  <script>
-    const url =
-      'https://companymu.earth/pages/recruiting';
-
-    const title = 'Thought you might like this project...';
-
-    const message =
-      'Company Mu is looking for contributors!' +
-      'Help build a better world through fashion, gaming and environmental activism.' +
-      'Kindred spirits only!';
-
-    const status = document.getElementById('mu-status');
-
-    async function copyLink() {
-      try {
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(url);
-        } else {
-          const field = document.createElement('textarea');
-          field.value = url;
-          field.style.position = 'fixed';
-          field.style.opacity = '0';
-          document.body.appendChild(field);
-          field.select();
-
-          const copied = document.execCommand('copy');
-          field.remove();
-
-          if (!copied) throw new Error('Copy failed');
-        }
-
-        status.textContent = 'Link copied!';
-      } catch (error) {
-        status.textContent = 'Copy this link: ' + url;
-      }
-    }
-
-    document.getElementById('copy')
-      .addEventListener('click', copyLink);
-
-    document.getElementById('share')
-      .addEventListener('click', async () => {
-        if (navigator.share) {
-          try {
-            await navigator.share({
-              title, text: message, url
-            });
-            return;
-          } catch (error) {
-            if (error.name === 'AbortError') return;
-          }
-        }
-
-        await copyLink();
-      });
-
-    document.getElementById('whatsapp').href =
-      'https://api.whatsapp.com/send?text=' +
-      encodeURIComponent(message + ' ' + url);
-
-    document.getElementById('linkedin').href =
-      'https://www.linkedin.com/sharing/share-offsite/?url=' +
-      encodeURIComponent(url);
-
-    document.getElementById('email').href =
-      'mailto:?subject=' + encodeURIComponent(title) +
-      '&body=' + encodeURIComponent(message + '\n\n' + url);
-  </script>
 </body>
 </html>
